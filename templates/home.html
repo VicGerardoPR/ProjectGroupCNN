@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classifier</title>
+</head>
+<body>
+    <h1>Image Classification App</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file">Upload an image:</label>
+        <input type="file" id="file" name="file" accept="image/*" required>
+        <button type="submit">Classify</button>
+    </form>
+    
+    <div id="results">
+        {% if predictions %}
+            <h2>Predictions:</h2>
+            <ul>
+                {% for prediction in predictions %}
+                    <li>{{ prediction.label }}: {{ prediction.probability }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
